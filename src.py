@@ -9,6 +9,9 @@ from rich import print
 
 
 def create_database():
+    """
+    Cria o banco de dados e a tabela de tarefas, se não existirem.
+    """
     with sqlite3.connect('tasks.db') as conn:
         cursor = conn.cursor()
         cursor.execute('''
@@ -23,6 +26,9 @@ def create_database():
 
 
 def create_task():
+    """
+    Solicita ao usuário o nome e a descrição da tarefa e a insere na banco de dados.
+    """
     new_task = input('\nEscreva o nome da Tarefa: ')
     describe_task = input('Escreva a descrição da Tarefa: ')
     
@@ -33,6 +39,9 @@ def create_task():
 
 
 def view_tasks():
+    """
+    Exibe todas as tarefas armazenadas no banco de dados em uma tabela formatada.
+    """
     with sqlite3.connect('tasks.db') as conn:
         cursor = conn.cursor()
         cursor.execute('SELECT id, nome, descrição, concluída FROM TAREFAS')
@@ -54,6 +63,10 @@ def view_tasks():
 
 
 def mark_task_as_completed():
+    """
+    Solicita ao usuário o ID da tarefa a ser marcada como concluída e atualiza seu
+    status no banco de dados.
+    """
     id = input('\nDigite o id da tarefa a ser marcada como concluída: ')
 
     with sqlite3.connect('tasks.db') as conn:
@@ -67,6 +80,9 @@ def mark_task_as_completed():
 
 
 def delete_task():
+    """
+    Solicita ao usuário o ID da tarefa a ser excluída e a remove do banco de dados.
+    """
     id = input('\nDigite o id da tarefa a ser excluída: ')
 
     with sqlite3.connect('tasks.db') as conn:
@@ -76,15 +92,24 @@ def delete_task():
 
 
 def quit_program():
+    """
+    Exibe uma mensagem de saída e encerra o programa.
+    """
     print('\nSaindo...\n')
     sys.exit()
 
 
 def clear_console():
+    """
+    Limpa o console, dependendo do sistema operacional.
+    """
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
 def menu():
+    """
+    Exibe o menu de opções e executa a ação correspondente com base na escolha do usuário.
+    """
     console = Console()
     console.print('[bold] Escolha uma das opções:\n\n[1] Criar uma Tarefa\n\[2] Visualizar Tarefas\n[3] Marcar Tarefa como concluída\n\[4] Excluir Tarefa\n[5] Sair\n[/]')
     choice = input('')
@@ -106,6 +131,9 @@ def menu():
 
 
 def introduction():
+    """
+    Exibe a introdução do programa com um painel estilizado.
+    """
     console = Console()
     title = 'Gerenciador de Tarefas'
     title_text = Text(title, justify='center', style='bold yellow')
