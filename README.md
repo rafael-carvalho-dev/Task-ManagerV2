@@ -22,7 +22,7 @@ Este é um aplicativo simples de linha de comando para gerenciar tarefas usando 
 1. Clone o repositório:
 
     ```bash
-    git clone https://github.com/seu-usuario/gerenciador-de-tarefas.git
+    git clone https://github.com/rafael-carvalho-dev/Task-ManagerV2.git
     cd gerenciador-de-tarefas
     ```
 
